@@ -39,11 +39,21 @@ main {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1rem;
     color: #0a192f;
+    background-color: lightgrey;
 }
 
 img {
     max-width: 100%;
     height: 300px;
+}
+
+#about img {
+    mix-blend-mode: luminosity;
+    transition: mix-blend-mode 0.3s ease-in-out;
+}
+
+#about img:hover {
+    mix-blend-mode: normal;
 }
 
 @media (max-width: 600px) {

@@ -33,12 +33,27 @@ async function fetchLoveAdvice() {
 
 fetchLoveAdvice();
 
-// Extra credit: Mouse event interactivity
-const apiContent = document.getElementById("api-content");
-apiContent.addEventListener("mousemove", (e) => {
-  const rect = apiContent.getBoundingClientRect();
-  const x = e.clientX - rect.left;
-  const y = e.clientY - rect.top;
-  apiContent.style.setProperty("--mouse-x", `${x}px`);
-  apiContent.style.setProperty("--mouse-y", `${y}px`);
+const adviceContainer = document.getElementById("advice-container");
+
+adviceContainer.addEventListener("mouseenter", () => {
+  adviceContainer.style.transform = "scale(1.05)";
+  adviceContainer.style.boxShadow = "0 5px 15px rgba(0,0,0,0.3)";
 });
+
+adviceContainer.addEventListener("mouseleave", () => {
+  adviceContainer.style.transform = "scale(1)";
+  adviceContainer.style.boxShadow = "none";
+});
+
+adviceContainer.addEventListener("click", () => {
+  adviceContainer.style.backgroundColor = getRandomColor();
+});
+
+function getRandomColor() {
+  const letters = "0123456789ABCDEF";
+  let color = "#";
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
